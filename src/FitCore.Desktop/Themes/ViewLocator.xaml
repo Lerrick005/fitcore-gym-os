@@ -1,0 +1,129 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:FitCore.Desktop.ViewModels.Wizard"
+                    xmlns:vwstep="clr-namespace:FitCore.Desktop.Views.Wizard.Steps"
+                    xmlns:pgvm="clr-namespace:FitCore.Desktop.ViewModels.Pages"
+                    xmlns:pg="clr-namespace:FitCore.Desktop.Views.Pages"
+                    xmlns:settingsview="clr-namespace:FitCore.Desktop.Views.Pages.Settings"
+                    xmlns:memview="clr-namespace:FitCore.Desktop.Views.Members"
+                    xmlns:mbrvm="clr-namespace:FitCore.Desktop.ViewModels"
+                    xmlns:mbrdetvm="clr-namespace:FitCore.Desktop.ViewModels.Members"
+                    xmlns:settingsvm="clr-namespace:FitCore.Desktop.ViewModels.Pages.Settings">
+
+    <!-- Wizard step templates (unchanged) -->
+    <DataTemplate DataType="{x:Type vm:BusinessIdentityViewModel}">
+        <vwstep:BusinessIdentityView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RolesAndOwnerViewModel}">
+        <vwstep:RolesAndOwnerView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ReviewViewModel}">
+        <vwstep:ReviewView/>
+    </DataTemplate>
+
+    <!-- Page templates -->
+    <DataTemplate DataType="{x:Type pgvm:DashboardViewModel}">
+        <pg:DashboardView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type mbrdetvm:MemberDetailViewModel}">
+        <memview:MemberDetailView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type mbrvm:MembersViewModel}">
+        <memview:MembersView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:PaymentsViewModel}">
+        <pg:PaymentsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:AttendanceViewModel}">
+        <pg:AttendanceView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:TrainersViewModel}">
+        <pg:TrainersView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:CashUpViewModel}">
+        <pg:CashUpView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:ReportsViewModel}">
+        <pg:ReportsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:SettingsHostViewModel}">
+        <pg:SettingsView/>
+    </DataTemplate>
+
+
+    <!-- Settings section templates -->
+    <DataTemplate DataType="{x:Type settingsvm:BrandingSettingsViewModel}">
+        <settingsview:BrandingSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:PlansSettingsViewModel}">
+        <settingsview:PlansSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:UsersSettingsViewModel}">
+        <settingsview:UsersSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:BusinessSettingsViewModel}">
+        <settingsview:BusinessSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:LocaleSettingsViewModel}">
+        <settingsview:LocaleSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:HoursSettingsViewModel}">
+        <settingsview:HoursSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:BackupSettingsViewModel}">
+        <settingsview:BackupSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:RewardsSettingsViewModel}">
+        <settingsview:RewardsSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:ModulesSettingsViewModel}">
+        <settingsview:ModulesSettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsvm:LicenceSettingsViewModel}">
+        <settingsview:LicenceSettingsView/>
+    </DataTemplate>
+
+
+    <DataTemplate DataType="{x:Type pgvm:ExpensesViewModel}">
+        <pg:ExpensesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:InventoryViewModel}">
+        <pg:InventoryView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:RetentionViewModel}">
+        <pg:RetentionView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:LoyaltyViewModel}">
+        <pg:LoyaltyView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type pgvm:ClassesViewModel}">
+        <pg:ClassesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type pgvm:FitnessViewModel}">
+        <pg:FitnessView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type pgvm:ClassAttendeesViewModel}">
+        <pg:ClassAttendeesView/>
+    </DataTemplate>
+</ResourceDictionary>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

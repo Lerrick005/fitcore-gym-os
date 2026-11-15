@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="FitCore.Desktop.Views.Pages.FitnessView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" Margin="0,0,0,24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Training &gt; Fitness Tracker" Style="{StaticResource Text.Secondary}" FontSize="12" Margin="0,0,0,4"/>
+                <TextBlock Text="Fitness Tracker" Style="{StaticResource Text.H1}" FontSize="28"/>
+                <TextBlock Text="Track workouts, body metrics, and member progress." Style="{StaticResource Text.Secondary}" Margin="0,4,0,0"/>
+            </StackPanel>
+            <Button Grid.Column="1" Content="Refresh" Style="{StaticResource Button.OutlineSoft}"
+                    Command="{Binding RefreshCommand}" Padding="16,10" VerticalAlignment="Bottom"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- LEFT: MEMBER LIST -->
+            <Border Grid.Column="0" Style="{StaticResource Card.Premium}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="MEMBERS" Style="{StaticResource Text.Caption}" Foreground="#B94720" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" PanningMode="VerticalOnly" Background="Transparent">
+                        <ListBox ItemsSource="{Binding Members}" SelectedItem="{Binding SelectedMember}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Padding" Value="0"/>
+                                    <Setter Property="Margin" Value="0,0,0,8"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#F9F9F9" CornerRadius="8" Padding="12" BorderBrush="#EAEAEA" BorderThickness="1">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding MemberName}" FontWeight="SemiBold" FontSize="14" Foreground="#242424"/>
+                                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                                <TextBlock Text="{Binding WorkoutCount30d, StringFormat='{}{0} workouts'}" FontSize="11" Foreground="#777777"/>
+                                                <TextBlock Text=" · " FontSize="11" Foreground="#BBBBBB"/>
+                                                <TextBlock Text="{Binding LatestWeightKg, StringFormat='{}{0:0.#} kg', TargetNullValue='—'}" FontSize="11" Foreground="#777777"/>
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding BiggestGain}" FontSize="11" Foreground="#18865B" FontWeight="SemiBold" Margin="0,4,0,0" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+
+            <!-- RIGHT: DETAIL -->
+            <Border Grid.Column="2" Style="{StaticResource Card.Premium}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header -->
+                    <Grid Grid.Row="0" Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{Binding SelectedSummary.MemberName, FallbackValue='Select a member'}" Style="{StaticResource Text.H2}" FontSize="20"/>
+                            <TextBlock Text="Recent activity and progress" Style="{StaticResource Text.Secondary}" FontSize="12" Margin="0,4,0,0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+                            <Button Content="+ Log Workout" Style="{StaticResource Button.Primary}" Command="{Binding LogWorkoutCommand}" Padding="14,8" Margin="0,0,8,0"/>
+                            <Button Content="+ Log Weight" Style="{StaticResource Button.OutlineSoft}" Command="{Binding LogBodyMetricCommand}" Padding="14,8"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Stat Cards -->
+                    <Grid Grid.Row="1" Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/><ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="*"/><ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="*"/><ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="#F9F9F9" CornerRadius="8" Padding="14">
+                            <StackPanel>
+                                <TextBlock Text="WEIGHT" FontSize="10" Foreground="#777777" FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding SelectedSummary.LatestWeightKg, StringFormat='{}{0:0.#} kg', TargetNullValue='—'}" FontSize="20" FontWeight="Bold" Foreground="#242424" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="2" Background="#F9F9F9" CornerRadius="8" Padding="14">
+                            <StackPanel>
+                                <TextBlock Text="Δ 30d" FontSize="10" Foreground="#777777" FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding SelectedSummary.WeightChange30d, StringFormat='{}{0:+0.#;-0.#;0} kg', TargetNullValue='—'}" FontSize="20" FontWeight="Bold" Foreground="#B94720" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="4" Background="#F9F9F9" CornerRadius="8" Padding="14">
+                            <StackPanel>
+                                <TextBlock Text="VOLUME (30d)" FontSize="10" Foreground="#777777" FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding SelectedSummary.TotalVolumeLifted, StringFormat='{}{0:N0} kg', FallbackValue='0 kg'}" FontSize="18" FontWeight="Bold" Foreground="#B94720" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="6" Background="#F9F9F9" CornerRadius="8" Padding="14">
+                            <StackPanel>
+                                <TextBlock Text="TOP LIFT" FontSize="10" Foreground="#777777" FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding SelectedSummary.TopLift, TargetNullValue='—'}" FontSize="12" FontWeight="SemiBold" Foreground="#242424" Margin="0,6,0,0" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Weight Trend Chart -->
+                    <Border Grid.Row="2" Background="#F9F9F9" CornerRadius="8" Padding="16" Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="WEIGHT TREND" FontSize="10" Foreground="#777777" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                            <ItemsControl ItemsSource="{Binding BodyMetrics}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,24,0">
+                                            <TextBlock Text="{Binding WeightKg, StringFormat='{}{0:0.#} kg', TargetNullValue='—'}" FontSize="18" FontWeight="Bold" Foreground="#B94720" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding RecordedAtUtc, StringFormat='{}{0:dd MMM}'}" FontSize="10" Foreground="#999999" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Workout Log -->
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="WORKOUT LOG" Style="{StaticResource Text.Caption}" Foreground="#777777" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding Workouts}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="#EAEAEA" BorderThickness="0,0,0,1" Padding="0,10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="140"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{Binding RecordedAtUtc, StringFormat='{}{0:dd MMM HH:mm}'}" FontSize="12" Foreground="#777777" VerticalAlignment="Center"/>
+                                                <StackPanel Grid.Column="1">
+                                                    <TextBlock Text="{Binding ExerciseName}" FontWeight="SemiBold" FontSize="14" Foreground="#242424"/>
+                                                    <TextBlock Text="{Binding Notes}" FontSize="11" Foreground="#888888" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                                </StackPanel>
+                                                <Border Grid.Column="2" Background="#FCEBE4" CornerRadius="6" Padding="10,6" VerticalAlignment="Center">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding Sets, StringFormat='{}{0}'}" FontWeight="Bold" FontSize="13" Foreground="#B94720"/>
+                                                        <TextBlock Text=" × " FontSize="13" Foreground="#B94720"/>
+                                                        <TextBlock Text="{Binding Reps, StringFormat='{}{0}'}" FontWeight="Bold" FontSize="13" Foreground="#B94720"/>
+                                                        <TextBlock Text=" @ " FontSize="13" Foreground="#B94720"/>
+                                                        <TextBlock Text="{Binding WeightKg, StringFormat='{}{0:0.#}kg'}" FontWeight="Bold" FontSize="13" Foreground="#B94720"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
+
+

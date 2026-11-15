@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/demo/">
+    <Project Path="demo/FitCore.DemoSeeder/FitCore.DemoSeeder.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/FitCore.Application/FitCore.Application.csproj" />
+    <Project Path="src/FitCore.Desktop/FitCore.Desktop.csproj" />
+    <Project Path="src/FitCore.Domain/FitCore.Domain.csproj" />
+    <Project Path="src/FitCore.Infrastructure/FitCore.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/FitCore.Tests/FitCore.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/FitCore.VendorTool/FitCore.VendorTool.csproj" />
+  </Folder>
+</Solution>

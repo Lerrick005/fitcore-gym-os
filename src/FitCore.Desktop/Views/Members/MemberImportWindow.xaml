@@ -1,0 +1,132 @@
+﻿<Window x:Class="FitCore.Desktop.Views.Members.MemberImportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Import members"
+        Width="900" Height="720"
+        MinWidth="700" MinHeight="600"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize"
+        Background="{DynamicResource Brush.Surface.Base}"
+        UseLayoutRounding="True" SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display">
+    <Grid Margin="32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Import members from CSV" Style="{StaticResource Text.H1}"/>
+            <TextBlock Text="Pick a file, preview validation, then commit. Duplicates are detected automatically."
+                       Style="{StaticResource Text.Secondary}" Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Style="{StaticResource Card}" Padding="20" Margin="0,0,0,16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="FILE" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Text.Tertiary}"/>
+                    <TextBlock Text="{Binding FileName}" Style="{StaticResource Text.Body}" Margin="0,4,0,0"/>
+                </StackPanel>
+                <Button Grid.Column="1" Content="Download template" Style="{StaticResource Button.OutlineSoft}"
+                        Command="{Binding DownloadTemplateCommand}" Margin="0,0,8,0"/>
+                <Button Grid.Column="2" Content="Select CSV..." Style="{StaticResource Button.Primary}"
+                        Command="{Binding SelectFileCommand}"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{StaticResource Card}" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="TOTAL" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Text.Tertiary}"/>
+                    <TextBlock Text="{Binding TotalRows}" Style="{StaticResource Text.H2}" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="2" Style="{StaticResource Card}" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="READY" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Semantic.Success}"/>
+                    <TextBlock Text="{Binding ReadyCount}" Style="{StaticResource Text.H2}" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="4" Style="{StaticResource Card}" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="DUPLICATE" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Semantic.Warning}"/>
+                    <TextBlock Text="{Binding DuplicateCount}" Style="{StaticResource Text.H2}" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="6" Style="{StaticResource Card}" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="INVALID" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Semantic.Danger}"/>
+                    <TextBlock Text="{Binding InvalidCount}" Style="{StaticResource Text.H2}" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="3" Background="{DynamicResource Brush.Surface.Raised}"
+                BorderBrush="{DynamicResource Brush.Border.Subtle}" BorderThickness="1"
+                CornerRadius="{DynamicResource Radius.Md}">
+            <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False" IsReadOnly="True"
+                      CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                      HorizontalGridLinesBrush="{DynamicResource Brush.Border.Subtle}"
+                      BorderThickness="0" Background="Transparent" RowBackground="Transparent"
+                      AlternatingRowBackground="{DynamicResource Brush.Surface.Sunken}">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="{DynamicResource Brush.Surface.Sunken}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="Padding" Value="12,10"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Strong}"/>
+                    </Style>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Padding" Value="12,8"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="#" Binding="{Binding RowNumber}" Width="50"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding FullName}" Width="*"/>
+                    <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="140"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
+                    <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <Border Grid.Row="4" BorderBrush="{DynamicResource Brush.Border.Subtle}" BorderThickness="0,1,0,0" Padding="0,16,0,0" Margin="0,16,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding StatusMessage}" Style="{StaticResource Text.Caption}"
+                           VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="Cancel" Style="{StaticResource Button.Secondary}"
+                            Command="{Binding CancelCommand}" Margin="0,0,12,0"/>
+                    <Button Content="Commit import" Style="{StaticResource Button.Primary}"
+                            Command="{Binding CommitCommand}"
+                            IsEnabled="{Binding CanCommit}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

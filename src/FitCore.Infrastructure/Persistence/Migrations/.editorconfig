@@ -1,0 +1,4 @@
+﻿# EF Core generates migrations with block-scoped namespaces.
+# Suppress IDE0161 (file-scoped namespace) for this folder only.
+[*.cs]
+dotnet_diagnostic.IDE0161.severity = none

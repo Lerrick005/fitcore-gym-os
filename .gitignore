@@ -1,0 +1,27 @@
+﻿bin/
+obj/
+*.user
+*.suo
+.vs/
+*.db
+*.db-shm
+*.db-wal
+logs/
+publish/
+TestResults/
+
+# FitCore vendor keys - NEVER commit
+tools/FitCore.VendorTool/Keys/vendor-private.pem
+tools/FitCore.VendorTool/Keys/vendor-public.pem
+
+# Installer output artifacts
+installer/Output/
+*.exe
+*.msi
+
+# Catch-all for keys in any location
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- Warm premium surfaces -->
+    <Color x:Key="Color.Surface.BaseTop">#F7F4EE</Color>
+    <Color x:Key="Color.Surface.BaseBottom">#F2EDE2</Color>
+    <Color x:Key="Color.Surface.Raised">#FFFFFF</Color>
+    <Color x:Key="Color.Surface.Sunken">#EDE6D8</Color>
+
+    <!-- Darker ink for readability -->
+    <Color x:Key="Color.Text.Primary">#141210</Color>
+    <Color x:Key="Color.Text.Secondary">#4A4438</Color>
+    <Color x:Key="Color.Text.Tertiary">#7A7266</Color>
+    <Color x:Key="Color.Text.Inverse">#FAF7F1</Color>
+
+    <Color x:Key="Color.Border.Subtle">#E8E1D2</Color>
+    <Color x:Key="Color.Border.Strong">#CFC5B0</Color>
+
+    <!-- Terracotta brand -->
+    <Color x:Key="Color.Brand.Primary">#B8451F</Color>
+    <Color x:Key="Color.Brand.PrimaryHover">#A03A18</Color>
+    <Color x:Key="Color.Brand.PrimaryPressed">#862F12</Color>
+
+    <Color x:Key="Color.Semantic.Danger">#D13B35</Color>
+    <Color x:Key="Color.Semantic.Warning">#B45309</Color>
+    <Color x:Key="Color.Semantic.Success">#18865B</Color>
+
+    <SolidColorBrush x:Key="Brush.Surface.Raised" Color="{DynamicResource Color.Surface.Raised}"/>
+    <SolidColorBrush x:Key="Brush.Surface.Sunken" Color="{DynamicResource Color.Surface.Sunken}"/>
+
+    <SolidColorBrush x:Key="Brush.Text.Primary" Color="{DynamicResource Color.Text.Primary}"/>
+    <SolidColorBrush x:Key="Brush.Text.Secondary" Color="{DynamicResource Color.Text.Secondary}"/>
+    <SolidColorBrush x:Key="Brush.Text.Tertiary" Color="{DynamicResource Color.Text.Tertiary}"/>
+    <SolidColorBrush x:Key="Brush.Text.Inverse" Color="{DynamicResource Color.Text.Inverse}"/>
+
+    <SolidColorBrush x:Key="Brush.Border.Subtle" Color="{DynamicResource Color.Border.Subtle}"/>
+    <SolidColorBrush x:Key="Brush.Border.Strong" Color="{DynamicResource Color.Border.Strong}"/>
+
+    <SolidColorBrush x:Key="Brush.Brand.Primary" Color="{DynamicResource Color.Brand.Primary}"/>
+    <SolidColorBrush x:Key="Brush.Brand.PrimaryHover" Color="{DynamicResource Color.Brand.PrimaryHover}"/>
+    <SolidColorBrush x:Key="Brush.Brand.PrimaryPressed" Color="{DynamicResource Color.Brand.PrimaryPressed}"/>
+
+    <SolidColorBrush x:Key="Brush.Semantic.Danger" Color="{DynamicResource Color.Semantic.Danger}"/>
+    <SolidColorBrush x:Key="Brush.Semantic.Warning" Color="{DynamicResource Color.Semantic.Warning}"/>
+    <SolidColorBrush x:Key="Brush.Semantic.Success" Color="{DynamicResource Color.Semantic.Success}"/>
+
+    <LinearGradientBrush x:Key="Brush.Surface.Base" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{DynamicResource Color.Surface.BaseTop}" Offset="0"/>
+        <GradientStop Color="{DynamicResource Color.Surface.BaseBottom}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Spacing -->
+    <sys:Double x:Key="Space.1">4</sys:Double>
+    <sys:Double x:Key="Space.2">8</sys:Double>
+    <sys:Double x:Key="Space.3">12</sys:Double>
+    <sys:Double x:Key="Space.4">16</sys:Double>
+    <sys:Double x:Key="Space.6">24</sys:Double>
+    <sys:Double x:Key="Space.8">32</sys:Double>
+    <sys:Double x:Key="Space.12">48</sys:Double>
+
+    <CornerRadius x:Key="Radius.Sm">6</CornerRadius>
+    <CornerRadius x:Key="Radius.Md">10</CornerRadius>
+    <CornerRadius x:Key="Radius.Lg">16</CornerRadius>
+
+    <!-- BIGGER TYPOGRAPHY -->
+    <sys:Double x:Key="FontSize.H1">48</sys:Double>
+    <sys:Double x:Key="FontSize.H2">32</sys:Double>
+    <sys:Double x:Key="FontSize.H3">22</sys:Double>
+    <sys:Double x:Key="FontSize.Body">16</sys:Double>
+    <sys:Double x:Key="FontSize.BodyLarge">18</sys:Double>
+    <sys:Double x:Key="FontSize.Caption">13</sys:Double>
+
+    <DropShadowEffect x:Key="Shadow.Card" Color="#141210" BlurRadius="24" ShadowDepth="3" Direction="270" Opacity="0.08"/>
+    <DropShadowEffect x:Key="Shadow.Raised" Color="#141210" BlurRadius="14" ShadowDepth="1" Direction="270" Opacity="0.12"/>
+
+</ResourceDictionary>
+

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FitCore.DemoSeeder</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\FitCore.Infrastructure\FitCore.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\FitCore.Application\FitCore.Application.csproj" />
+    <ProjectReference Include="..\..\src\FitCore.Domain\FitCore.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bogus" />
+  </ItemGroup>
+</Project>

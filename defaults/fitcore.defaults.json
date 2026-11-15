@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://fitcore.local/schemas/fitcore.defaults.schema.json",
+  "schemaVersion": 1,
+  "_comment": "Wizard suggestions only. Business identity, currency, prices and thresholds belong HERE, never in code. Ship per-gym customized versions.",
+  "branding": {
+    "businessName": "",
+    "tradingName": "",
+    "tagline": "",
+    "logoLightPath": "",
+    "logoDarkPath": "",
+    "primaryColor": "#B8451F",
+    "secondaryColor": "#6B7280",
+    "accentColor": "#15803D"
+  },
+  "business": {
+    "phonePrimary": "",
+    "phoneSecondary": "",
+    "email": "",
+    "website": "",
+    "physicalAddress": "",
+    "registrationNumber": "",
+    "taxNumber": "",
+    "socialHandles": ""
+  },
+  "locale": {
+    "currencyCode": "KES",
+    "currencySymbol": "KSh",
+    "symbolBeforeAmount": true,
+    "decimalPlaces": 2,
+    "thousandsSeparator": ",",
+    "decimalSeparator": ".",
+    "timeZoneId": "Africa/Nairobi",
+    "dateFormat": "dd/MM/yyyy",
+    "timeFormat": "HH:mm",
+    "firstDayOfWeek": 0
+  },
+  "hours": {
+    "monday": { "isClosed": false, "openTime": "06:00", "closeTime": "22:00" },
+    "tuesday": { "isClosed": false, "openTime": "06:00", "closeTime": "22:00" },
+    "wednesday": { "isClosed": false, "openTime": "06:00", "closeTime": "22:00" },
+    "thursday": { "isClosed": false, "openTime": "06:00", "closeTime": "22:00" },
+    "friday": { "isClosed": false, "openTime": "06:00", "closeTime": "22:00" },
+    "saturday": { "isClosed": false, "openTime": "08:00", "closeTime": "20:00" },
+    "sunday": { "isClosed": false, "openTime": "08:00", "closeTime": "18:00" },
+    "warnOutsideHours": true,
+    "blockOutsideHours": false
+  },
+  "plans": {
+    "templates": [
+      { "name": "Day pass", "description": "One day access", "priceMinor": 50000, "durationValue": 1, "durationUnit": 0, "isActive": true, "sortOrder": 0 },
+      { "name": "Weekly", "description": "One week unlimited", "priceMinor": 150000, "durationValue": 1, "durationUnit": 1, "isActive": true, "sortOrder": 1 },
+      { "name": "Monthly", "description": "One month unlimited", "priceMinor": 350000, "durationValue": 1, "durationUnit": 2, "isActive": true, "sortOrder": 2 },
+      { "name": "Quarterly", "description": "Three months unlimited", "priceMinor": 900000, "durationValue": 3, "durationUnit": 2, "isActive": true, "sortOrder": 3 },
+      { "name": "Annual", "description": "Twelve months unlimited", "priceMinor": 3000000, "durationValue": 12, "durationUnit": 2, "isActive": true, "sortOrder": 4 }
+    ]
+  },
+  "discounts": { "allowStacking": false, "maxStackedDiscounts": 1, "activePromoCodes": [] },
+  "rules": {
+    "gracePeriodDays": 0,
+    "lateRenewalPolicy": "none",
+    "maxFreezeDays": 14,
+    "freezeFeeMinor": 0,
+    "renewalDatePolicy": "from_expiry",
+    "refundPolicy": "no_refund",
+    "partPaymentsAllowed": true,
+    "expiredMembersCanCheckIn": false
+  },
+  "thresholds": {
+    "inactivityDaysForAtRisk": 14,
+    "daysBeforeExpiryForReminder": 7,
+    "visitsPerWeekForActive": 2,
+    "followUpCadenceDays": 7,
+    "backupStalenessWarningDays": 7
+  },
+  "roles": { "allowRoleCloning": true, "requireReasonForPermissionChange": true },
+  "modules": { "showDisabledModulesInSettings": true, "autoEnableDependenciesOnEnable": false },
+  "receipt": {
+    "headerText": "",
+    "footerText": "Asante for choosing us. Karibu tena!",
+    "paperType": "thermal80",
+    "showTaxLine": false,
+    "receiptNumberPrefix": "R-"
+  },
+  "messageTemplates": {},
+  "backup": { "scheduledBackupsEnabled": true, "scheduledIntervalHours": 24, "secondaryLocationPath": "", "retentionCount": 30 },
+  "gymPreferences": {
+    "gymType": "general",
+    "checkInMethod": "manual_search",
+    "dayPassSupported": true,
+    "lockerManagementEnabled": false,
+    "classBookingEnabled": false,
+    "photoRequiredOnRegistration": false,
+    "requiredMemberFields": ["FullName", "Phone"]
+  },
+  "ui": { "theme": "light", "sidebarCollapsedByDefault": false, "autoLockMinutes": 15, "language": "en" }
+}
